@@ -8,7 +8,14 @@ dotenv.config();
 connectDB();
 
 const app = express();
-app.use(cors());
+app.use(cors({
+     origin:["https://contact-form-app-one.vercel.app"],
+     credentials:true,
+     methods:["GET","POST","PUT","PATCH","DELETE"],
+     exposedHeaders:["Authorization"],
+     
+}));
+
 app.use(express.json());
 
 app.use("/api/contacts", contactRoutes);
